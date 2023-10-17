@@ -1,7 +1,25 @@
 import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import Layout from "./Layout";
+import About from "./pages/About";
+import Article from "./pages/Article";
+import Articles from "./pages/Articles";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
-  return <div>컨텐츠 요소가 표시됩니다.</div>;
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="profiles/:username" element={<Profile />} />
+      </Route>
+      <Route path="/articles" element={<Articles />}>
+        <Route path=":id" element={<Article />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;
